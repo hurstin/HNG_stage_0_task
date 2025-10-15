@@ -17,7 +17,7 @@ const limiter = rateLimit({
 });
 
 //should be called before all route with '/api'
-app.use('/api', limiter);
+app.use('/', limiter);
 
 app.use(express.json());
 
@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
   res.json({ message: 'hello world' });
 });
 
-app.use('/api', router);
+app.use('/', router);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

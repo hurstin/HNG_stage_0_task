@@ -58,13 +58,12 @@ http://localhost:3000
 
 ```sh
 curl http://localhost:3000/
-# Expected: {"message":"hello world"}
 ```
 
-- API (example: /api/me):
+- API (example: /me):
 
 ```sh
-curl http://localhost:3000/api/me
+curl http://localhost:3000/me
 # Expected: JSON with name, email, stack, timestamp, and a cat fact
 ```
 
@@ -72,7 +71,7 @@ You can also use the provided `request.http` file with an HTTP client extension 
 
 ## Notes
 
-- Rate limiting is enabled for routes under `/api` via `express-rate-limit`.
+- Rate limiting is enabled for routes under `/` via `express-rate-limit`.
 - If external APIs are used (e.g., cat fact service), ensure your network allows outbound requests.
 - If you encounter "Cannot use import statement outside a module", add `"type": "module"` to package.json or use CommonJS `require`.
 
