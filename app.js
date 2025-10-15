@@ -1,10 +1,13 @@
 import express from 'express';
 import router from './route.js';
 import rateLimit from 'express-rate-limit';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: './config.env' });
 
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // limit requests from same ip
 const limiter = rateLimit({
