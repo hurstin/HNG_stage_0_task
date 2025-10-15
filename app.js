@@ -1,0 +1,29 @@
+import express from 'express';
+import router from './route.js';
+import rateLimit from 'express-rate-limit';
+
+const app = express();
+
+const PORT = 3000;
+
+// limit requests from same ip
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'too many request from this ip, please try again in an hour',
+});
+
+//should be called before all route with '/api'
+app.use('/api', limiter);
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.json({ message: 'hello world' });
+});
+
+app.use('/api', router);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
