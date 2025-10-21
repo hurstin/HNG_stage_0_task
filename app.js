@@ -16,7 +16,7 @@ const limiter = rateLimit({
   message: 'too many request from this ip, please try again in an hour',
 });
 
-//should be called before all route with '/api'
+//should be called before all routes
 app.use('/', limiter);
 
 app.use(express.json());
